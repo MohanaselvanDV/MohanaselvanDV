@@ -1,0 +1,23 @@
+package com.demo.example.Controller;
+
+import com.demo.example.Model.Customer;
+import com.demo.example.Service.CustomerServiceimp;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@CrossOrigin()
+@RestController
+public class CustomerController {
+    @Autowired
+    private CustomerServiceimp customerServiceimp;
+    @GetMapping("/getAllCustomer")
+    public List<Customer> GetAllCustomer() {
+        return customerServiceimp.getAllCustomer();
+    }
+    @PostMapping("/AddCustomer")
+    public Customer CreateCustomer(@RequestBody Customer customer) {
+        return customerServiceimp.createCustomer(customer);
+    }
+}

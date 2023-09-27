@@ -1,0 +1,12 @@
+package com.demo.example.Repository;
+
+import com.demo.example.Model.Customer;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface CustomerRepository extends JpaRepository<Customer, Integer> {
+    @Query("select coalesce(max(a.customer_id), 0) from Customer a")
+    public Integer findMaxId();
+}

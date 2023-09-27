@@ -1,0 +1,21 @@
+package com.demo.example.Service;
+
+import com.demo.example.Model.Customer;
+import com.demo.example.Model.Login;
+import com.demo.example.Repository.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class CustomerServiceimp {
+    @Autowired
+    private CustomerRepository customerRepository;
+    public List<Customer> getAllCustomer(){ return (List<Customer>) customerRepository.findAll(); }
+    public Customer createCustomer(Customer customer){
+        customer.setCustomer_id(customerRepository.findMaxId() +1);
+        return customerRepository.save(customer);
+    }
+
+}

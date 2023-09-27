@@ -1,0 +1,27 @@
+import jakarta.persistence.Basic;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Data;
+
+import java.math.BigInteger;
+
+@Entity
+@Data
+@Table(name = "customer")
+
+public class Customer {
+    @Id
+    @Basic
+
+    private Integer customer_id;
+    private String customer_mail;
+    private String customer_password;
+    private String customer_name;
+    private BigInteger customer_mobile;
+    private String customer_address;
+    private String customer_idproof;
+    private Integer reward_points;
+    private String admin_verified;
+}
+
